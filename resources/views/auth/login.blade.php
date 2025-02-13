@@ -17,9 +17,9 @@
             <x-input-label for="password" :value="__('Password')" />
 
             <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
+                          type="password"
+                          name="password"
+                          required autocomplete="current-password" />
 
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
@@ -42,6 +42,16 @@
             <x-primary-button class="ms-3">
                 {{ __('Log in') }}
             </x-primary-button>
+        </div>
+
+        <!-- Register Redirect -->
+        <div class="flex items-center justify-center mt-4">
+            <p class="text-sm text-gray-600">
+                {{ __("Don't have an account?") }}
+                <a class="underline text-indigo-600 hover:text-indigo-900 ml-1" href="{{ route('register') }}">
+                    {{ __('Register here') }}
+                </a>
+            </p>
         </div>
     </form>
 </x-guest-layout>

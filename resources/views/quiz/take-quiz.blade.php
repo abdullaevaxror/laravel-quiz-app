@@ -1,3 +1,4 @@
+
 <x-header></x-header>
 <body class="flex flex-col min-h-screen bg-gray-100">
 <!-- Navigation -->

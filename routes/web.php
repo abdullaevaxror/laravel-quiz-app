@@ -2,19 +2,29 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QuizController;
+use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/take-quiz', function () {
-    return view('quiz/take-quiz');
-});
-Route::get('dashboard', function () {
 
-});
 
-Route::get('/about', function () {
-    return view('about');
+
+Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/take-quiz/{slug}',[QuizController::class, 'takeQuiz'])->middleware('auth')->name('take-quiz');
+Route::prefix('dashboard')->middleware('auth')->group(function () {
+    Route::get('/', [DashboardController::class, 'home'])->middleware(['auth', 'verified'])->name('dashboard');
+    Route::get('/create-quiz', [QuizController::class, 'create'])->name('create-quiz');
+    Route::get('/quizzes', [QuizController::class, 'index'])->name('quizzes');
+    Route::get('/quizzes/{quiz}', [QuizController::class, 'edit'])->name('edit-quiz');
+    Route::post('quizzes/{quiz}/delete', [QuizController::class, 'destroy'])->name('delete-quiz');
+    Route::post('/quizzes/{quiz}/update', [QuizController::class, 'update'])->name('update-quiz');
+    Route::get('/quizzes/{quiz}/delete', [QuizController::class, 'destroy'])->name('destroy-quiz');
+    Route::get('/statistics', [DashboardController::class, 'statistics'])->name('statistics');
+
+
+
+    Route::post('/create-quiz', [QuizController::class, 'store'])->name('store-quiz');
 });
 
 
@@ -28,4 +38,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
