@@ -1,8 +1,22 @@
-
 <x-main.header></x-main.header>
 <div class="flex flex-col min-h-screen bg-gray-100">
     <!-- Navigation -->
-    <x-main.navbar></x-main.navbar>
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between">
+                <div class="flex space-x-7">
+                    <div>
+                        <a href="{{ route('dashboard') }}" class="flex items-center py-4 px-2">
+                            <span class="font-semibold text-gray-500 text-lg">Quiz Platform</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <a href="{{ route('dashboard') }}" class="py-2 px-4 text-gray-500 hover:text-gray-700">Dashboard</a>
+                </div>
+            </div>
+        </div>
+    </nav>
 
     <!-- Main Content -->
     <main class="flex-grow container mx-auto px-4 py-8">
@@ -88,6 +102,7 @@
         </div>
     </main>
 
+    <!-- Quiz JavaScript -->
     <script>
         // Timer functionality
         function startTimer(duration, display) {
@@ -105,7 +120,7 @@
 
         // Initialize quiz
         let options = document.getElementById('options'),
-            questions = JSON.parse(`<?php echo $questions->toJSON() ?>`);
+            questions = JSON.parse(`<?php echo $quiz->toJSON() ?>`).questions;
         currentQuestionIndex = 0;
 
         function getQuestion(index=0) {

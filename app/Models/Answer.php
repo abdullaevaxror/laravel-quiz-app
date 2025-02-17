@@ -10,4 +10,5 @@ class Answer extends Model
         'option_id',
         'result_id',
     ];
+
 }

@@ -1,4 +1,3 @@
-
 import defaultTheme from 'tailwindcss/defaultTheme';
 import forms from '@tailwindcss/forms';
 
@@ -19,4 +18,5 @@ export default {
     },
 
     plugins: [forms],
+
 };
