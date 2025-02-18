@@ -9,9 +9,12 @@ class HomeController extends Controller
     public function welcome()
     {
         return view('welcome');
+
     }
-    public function about()
-    {
+
+    public function about(){
         return view('about');
     }
+
+
 }

@@ -48,7 +48,7 @@
                 <!-- Question Container -->
                 <div class="mb-8">
                     <div class="mb-4">
-                        <h2 class="text-lg font-semibold text-gray-800" id="question">What is the output of console.log(typeof undefined)?</h2>
+                        <h2 class="text-lg font-semibold text-gray-800" id="question">{{$quiz->question}}</h2>
                     </div>
 
                     <!-- Options -->

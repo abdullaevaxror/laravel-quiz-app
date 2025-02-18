@@ -1,4 +1,3 @@
-
 <?php
 
 use App\Http\Controllers\ProfileController;
@@ -14,11 +13,11 @@ Route::get('/', [HomeController::class, 'welcome'])->name('welcome');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 
-Route::post('take-quiz/{slug}',[QuizController::class,'takeQuiz'])->name('take_quiz');
 
 
-Route::get('show-quiz/{slug}', [QuizController::class, 'show'])->name('show-quiz');
-Route::post('start-quiz/{slug}', [QuizController::class, 'startQuiz'])->name('start-quiz');
+
+Route::get('show-quiz/{slug}', [QuizController::class, 'show'])->middleware('auth', 'verified')->name('show-quiz');
+Route::post('start-quiz/{slug}', [QuizController::class, 'startQuiz'])->middleware('auth','verified')->name('start-quiz');
 Route::post('take-quiz/{slug}', [QuizController::class, 'takeQuiz'])->name('take-quiz');
 Route::prefix('dashboard')->middleware('auth')->group(function () {
     Route::get('/', [DashboardController::class, 'home'])->middleware(['auth', 'verified'])->name('dashboard');

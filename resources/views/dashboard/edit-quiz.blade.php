@@ -1,5 +1,5 @@
-<x-dashboard.header></x-dashboard.header>
-@vite('resources/js/add-quiz.js')
+
+<x-main.header></x-main.header>
 <body class="bg-gray-100">
 <div class="flex min-h-screen">
     <!-- Sidebar -->
@@ -30,19 +30,18 @@
                                 <div>
                                     <label for="title" class="block text-sm font-medium text-gray-700">Quiz Title</label>
                                     <input type="text" id="title" name="title" placeholder="Quiz Title" required
-                                           value="{{$quiz->title}}"
+                                           value="{{ $quiz->title }}"
                                            class="w-full px-4 py-2 border rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                 </div>
                                 <div>
                                     <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
                                     <textarea id="description" name="description" rows="3" placeholder="Description" required
-
                                               class="w-full px-4 py-2 border rounded-lg mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">{{ $quiz->description }}</textarea>
                                 </div>
                                 <div>
                                     <label for="timeLimit" class="block text-sm font-medium text-gray-700">Time Limit (minutes)</label>
                                     <input type="number" id="timeLimit" name="timeLimit" placeholder="Time Limit" min="1" required
-                                           value="{{$quiz->time_limit}}"
+                                           value="{{ $quiz->time_limit }}"
                                            class="px-4 py-2 border rounded-lg mt-1 block w-48 rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500">
                                 </div>
                             </div>
@@ -57,8 +56,8 @@
                                 </button>
                             </div>
 
-                            <!-- Question Template -->
 
+                            <!-- Question Template -->
                             <div id="questionsContainer" class="space-y-6">
                                 <div class="p-4 border border-gray-200 rounded-lg" data-question-id="1">
                                     @foreach($quiz->questions as $question)
@@ -106,7 +105,7 @@
                         <div class="flex justify-end">
                             <button type="submit"
                                     class="px-6 py-3 bg-green-600 text-white font-medium rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2">
-                                Update Quiz
+                                Edit Quiz
                             </button>
                         </div>
                     </form>
@@ -115,5 +114,4 @@
         </main>
     </div>
 </div>
-</body>
-</html>
+<x-main.footer></x-main.footer>

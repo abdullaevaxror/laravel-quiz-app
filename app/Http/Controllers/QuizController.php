@@ -219,7 +219,7 @@ class QuizController extends Controller
             ->whereIn('id', $answers->pluck('option_id'))
             ->count();
 
-        return view('quiz.result-quiz', [
+        return view('quiz.result', [
             'quiz' => $quiz->withCount('questions')->first(),
             'correctOptionCount' => $correctOptionCount,
             'time_taken' => Date::createFromFormat('Y-m-d H:i:s', $result->finished_at)->diff($result->started_at),
